@@ -12,12 +12,12 @@
 
 # Configuration
 ROOT_CERT="root.pem"
-ROOT_ALIAS="sectigo-root-R46"
+ROOT_ALIAS="root-alias"
 
 INT_CERT="intermediate.pem"
-INT_ALIAS="sectigo-intermediate-R36"
+INT_ALIAS="intermediate-alias"
 
-BASE_PATH="/u203/prty/pr11/sasa"
+BASE_PATH="/sashome"
 JKS_PASS="changeit"
 
 # Installation directories
@@ -26,10 +26,6 @@ INSTALL_DIRS=(
     "install/midtier"
     "install/meta"
     "install/compute"
-    "install_M5/va"
-    "install_M5/midtier"
-    "install_M5/meta"
-    "install_M5/compute"
 )
 
 # Get fingerprints
@@ -107,5 +103,6 @@ for dir in "${INSTALL_DIRS[@]}"; do
     
     echo ""
 done
+
 
 echo "Import complete"
