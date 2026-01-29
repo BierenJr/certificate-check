@@ -15,7 +15,7 @@
 ROOT_CERT="root.pem"
 INT_CERT="intermediate.pem"
 
-BASE_PATH="/u203/prty/pr11/sasa"
+BASE_PATH="/sashome"
 JKS_PASS="changeit"
 
 # Installation directories
@@ -24,10 +24,6 @@ INSTALL_DIRS=(
     "install/midtier"
     "install/meta"
     "install/compute"
-    "install_M5/va"
-    "install_M5/midtier"
-    "install_M5/meta"
-    "install_M5/compute"
 )
 
 # Get fingerprints
@@ -80,4 +76,5 @@ for dir in "${INSTALL_DIRS[@]}"; do
     check_jks "$jssec" "$INT_FP" && echo "  Intermediate: PRESENT" || echo "  Intermediate: NOT FOUND"
     
     echo ""
+
 done
