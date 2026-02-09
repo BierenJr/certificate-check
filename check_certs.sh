@@ -15,15 +15,12 @@
 ROOT_CERT="root.pem"
 INT_CERT="intermediate.pem"
 
-BASE_PATH="/sashome"
+BASE_PATH="/mnt/sas/mid/"
 JKS_PASS="changeit"
 
 # Installation directories
 INSTALL_DIRS=(
-    "install/va"
-    "install/midtier"
-    "install/meta"
-    "install/compute"
+    "install/"
 )
 
 # Get fingerprints
@@ -74,6 +71,12 @@ for dir in "${INSTALL_DIRS[@]}"; do
     echo "$jssec"
     check_jks "$jssec" "$ROOT_FP" && echo "  Root: PRESENT" || echo "  Root: NOT FOUND"
     check_jks "$jssec" "$INT_FP" && echo "  Intermediate: PRESENT" || echo "  Intermediate: NOT FOUND"
+
+    # cacerts
+    cacert="$BASE_PATH/$dir/SASPrivateJavaRuntimeEnvironment/9.4/jre/lib/security/cacerts"
+    echo "$cacert"
+    check_jks "$cacert" "$ROOT_FP" && echo "  Root: PRESENT" || echo "  Root: NOT FOUND"
+    check_jks "$cacert" "$INT_FP" && echo "  Intermediate: PRESENT" || echo "  Intermediate: NOT FOUND"
     
     echo ""
 
