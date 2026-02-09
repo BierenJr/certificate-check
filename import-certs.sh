@@ -101,6 +101,13 @@ for dir in "${INSTALL_DIRS[@]}"; do
         check_jks "$jssec" "$INT_FP" || import_jks "$jssec" "$INT_CERT" "$INT_ALIAS"
     fi
     
+    # cacerts
+    cacert="$BASE_PATH/$dir/SASPrivateJavaRuntimeEnvironment/9.4/jre/lib/security/cacerts"
+    if [ -f "$cacert" ]; then
+        check_jks "$cacert" "$ROOT_FP" || import_jks "$cacert" "$ROOT_CERT" "$ROOT_ALIAS"
+        check_jks "$cacert" "$INT_FP" || import_jks "$cacert" "$INT_CERT" "$INT_ALIAS"
+    fi
+    
     echo ""
 done
 
